@@ -15,6 +15,7 @@ const Content = (props) => {
         currClassStudents: [],
         currDate: new Date(),
         currClassCheckinInfo: [],
+        currClassRfidCheckin: [],
     });
 
     const classQuery = query(ref(db, "students"));
@@ -49,39 +50,34 @@ const Content = (props) => {
 
     useEffect(() => {
         if (currClassId) {
-            const checkinStudent = [];
-    
-            const handleSnapshot = (snapshot) => {
+            onValue(face_recognize, (snapshot) => {
                 const records = snapshot.val() || {};
                 if (records !== null) {
                     const data = Object.values(records);
-                    data.forEach((item) => {
-                        checkinStudent.push(item);
-                    });
-                }
-            };
-    
-            const facePromise = new Promise((resolve) => {
-                onValue(face_recognize, (snapshot) => {
-                    handleSnapshot(snapshot);
-                    resolve();
-                });
+                    setState(prev => ({...prev, currClassCheckinInfo: data}));
+                };
             });
-    
-            const rfidPromise = new Promise((resolve) => {
-                onValue(rfid_card, (snapshot) => {
-                    handleSnapshot(snapshot);
-                    resolve();
-                });
-            });
-    
-            Promise.all([facePromise, rfidPromise]).then(() => {
-                console.log(checkinStudent);
-                setState((prev) => ({ ...prev, currClassCheckinInfo: checkinStudent }));
+            onValue(rfid_card, (snapshot) => {
+                const records = snapshot.val() || {};
+                if (records !== null) {
+                    const data = Object.values(records);
+                    setState(prev => ({...prev, currClassRfidCheckin: data}));
+                };
             });
         }
     }, [state.currDate, currClassId]);
     
+    useEffect(() => {
+        if (currClassId) {
+            onValue(face_recognize, (snapshot) => {
+                const records = snapshot.val() || {};
+                if (records !== null) {
+                    const data = Object.values(records);
+                    setState(prev => ({...prev, currClassCheckinInfo: data}));
+                };
+            });
+        }
+    }, [state.currDate, currClassId]);
 
     return (
         <div className="w-full h-full flex flex-col bg-white rounded-lg shadow-lg p-2">
@@ -92,6 +88,7 @@ const Content = (props) => {
                         currClassStudents={state.currClassStudents}
                         currClassInfo={currClassInfo}
                         currClassCheckinInfo={state.currClassCheckinInfo}
+                        currClassRfidCheckin={state.currClassRfidCheckin}
                     />
                 </div>
                 <div className="w-[60%] h-full">

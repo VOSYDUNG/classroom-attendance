@@ -11,7 +11,7 @@ const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sh
 
 const LeftContent = (props) => {
 
-    const { currClassInfo, currClassCheckinInfo, currClassStudents } = props;
+    const { currClassInfo, currClassCheckinInfo, currClassStudents, currClassRfidCheckin } = props;
 
     const classTime = {
         0: 'Thứ 2',
@@ -24,7 +24,8 @@ const LeftContent = (props) => {
     }[currClassInfo?.classDate];
 
     const handeDownloadExcel = () => {
-        const currStudentCheckinId = currClassCheckinInfo.map(item => item?.mssv);
+        const classCheckinArr = currClassCheckinInfo?.concat(currClassRfidCheckin);
+        const currStudentCheckinId = classCheckinArr.map(item => item?.mssv);
 
         const excelData = currClassStudents?.map((item, index) => {
             if (currStudentCheckinId.includes(item?.mssv)) {
@@ -54,7 +55,7 @@ const LeftContent = (props) => {
             <div className="leading-3 p-3">{`Môn học: ${currClassInfo?.className}`}</div>
             <div className="leading-3 p-3">{`Lịch học: ${classTime}`}</div>
             <div className="flex items-center justify-between border-b border-[rgb(219,219,219)]">
-                <div className="leading-3 p-3 ">{`Sỉ số: ${currClassCheckinInfo?.length}/${currClassInfo?.numberOfStudents}`}</div>
+                <div className="leading-3 p-3 ">{`Sỉ số: ${currClassCheckinInfo?.length + currClassRfidCheckin?.length}/${currClassStudents?.length}`}</div>
                 <div
                     title='Xuất file excel'
                     className="p-1 mr-2 hover:bg-[rgb(219,219,219)] transition-all duration-300 cursor-pointer"
@@ -71,7 +72,14 @@ const LeftContent = (props) => {
                         </div>
                     )
                 })}
-                {currClassCheckinInfo?.length === 0 && (
+                {currClassRfidCheckin?.map((item, index) => {
+                    return (
+                        <div className="my-2" key={`checkin-${index}`}>
+                            <CheckinBlock data={item}/>
+                        </div>
+                    )
+                })}
+                {(currClassCheckinInfo?.length === 0 && currClassRfidCheckin?.length === 0) && (
                     <div className="flex flex-col items-center justify-center">
                         <IconNodata/>
                         <div className="">Không có dữ liệu</div>

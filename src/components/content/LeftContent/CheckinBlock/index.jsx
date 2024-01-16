@@ -33,7 +33,7 @@ const CheckinBlock = (props) => {
         <>
             <div className="h-20 p-2 flex w-full border border-[rgb(159,159,159)] rounded-md">
                 <div className="mr-2">
-                    <img src={data?.avt} className="h-full rounded-md cursor-pointer" onClick={handleVisiblePreview}/>
+                    <img src={data?.avt || state.currStudent?.avt} className="h-full rounded-md cursor-pointer" onClick={handleVisiblePreview}/>
                 </div>
                 <div className="flex flex-col">
                     <div className="text-blue-500 font-medium">{state.currStudent?.name}</div>
