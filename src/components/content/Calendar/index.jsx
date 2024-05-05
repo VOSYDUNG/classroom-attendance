@@ -112,7 +112,7 @@ const Calendar = (props) => {
 
         handleChangeDate(now);
 
-        setState(prev => ({...prev, weeklyDate: firstAndLast, currDate: currDate, isCurrWeek: true, currDay: date}));
+        setState(prev => ({...prev, weeklyDate: firstAndLast, currDate: currDate, isCurrWeek: true, currDay: date, currDateOfWeek: now}));
     };
 
     const handleChangeSelectedDate = (date) => {
