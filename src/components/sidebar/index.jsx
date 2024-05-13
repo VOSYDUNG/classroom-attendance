@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import ClassBlock from "./ClassBlock";
 
-import avt from '../../assets/image/avt.png';
 import IconLogout from '../../assets/icons/iconLogout.svg?react';
 
 const Sidebar = (props) => {
@@ -14,7 +13,7 @@ const Sidebar = (props) => {
             <div className="flex justify-between p-4">
                 <div className="flex">
                     <div className="mr-3">
-                        <img src={currUser?.photoURL || avt} className="w-[80px] rounded-lg shadow-md"/>
+                        <img src={currUser?.photoURL} className="w-[80px] h-[80px] rounded-lg shadow-md"/>
                     </div>
                     <div className="flex flex-col">
                         <div className="font-normal">{currUser?.displayName}</div>

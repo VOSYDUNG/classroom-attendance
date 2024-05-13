@@ -15,14 +15,14 @@ import { getFirestore } from 'firebase/firestore'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDpUMYNNoIc_AqJBmt1MMBwhOdrADC6HI8",
-  authDomain: "test-3c6cb.firebaseapp.com",
-  databaseURL: "https://test-3c6cb-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "test-3c6cb",
-  storageBucket: "test-3c6cb.appspot.com",
-  messagingSenderId: "761778131130",
-  appId: "1:761778131130:web:aabc40ceaeef31180bb283",
-  measurementId: "G-KS77FEEL50"
+  apiKey: "AIzaSyB-jNt2h71-lO5J_gN260vqfeLDPgyHYOA",
+  authDomain: "attendance-system-face-rfid.firebaseapp.com",
+  databaseURL: "https://attendance-system-face-rfid-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "attendance-system-face-rfid",
+  storageBucket: "attendance-system-face-rfid.appspot.com",
+  messagingSenderId: "841640037534",
+  appId: "1:841640037534:web:44e00bd117bec36718ff8f",
+  measurementId: "G-VL795FNFW2"
 };
 
 // Initialize Firebase
