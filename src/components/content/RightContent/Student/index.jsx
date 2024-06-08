@@ -10,16 +10,16 @@ const Student = (props) => {
             onClick={() => handleModalStudent('edit', data)}
         >
             <div className="text-sm font-medium">{data?.name}</div>
-            <div className="flex justify-between items-center text-sm">
-                <div className="flex items-center">
+            <div className="flex items-center text-xs gap-2">
+                <div className="flex items-center min-w-[110px]">
                     <div className="mr-2">MSSV:</div>
                     <div className="text-[rgb(25,103,210)] font-semibold">{data?.mssv}</div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex flex-grow items-center justify-center">
                     <div className="mr-2">Gmail:</div>
                     <div className="text-[rgb(25,103,210)] font-semibold">{data?.gmail}</div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center min-w-[150px]">
                     <div className="mr-2">Lớp:</div>
                     <div className="text-[rgb(25,103,210)] font-semibold">{data?.class}</div>
                 </div>

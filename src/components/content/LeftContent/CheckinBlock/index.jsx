@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import { Image } from "antd";
+import { Image, Tooltip } from "antd";
 
 import { db } from '../../../../core/firebase.js';
 import { ref, get, child } from 'firebase/database';
+
+import IconCheck from '../../../../assets/icons/iconCheck.svg?react';
 
 const CheckinBlock = (props) => {
 
@@ -32,10 +34,10 @@ const CheckinBlock = (props) => {
 
     return (
         <>
-            <div className="h-20 p-2 flex w-full border border-[rgb(159,159,159)] rounded-md">
+            <div className="h-20 p-2 flex w-full border border-[rgb(159,159,159)] rounded-md relative">
                 <div className="mr-2 h-full">
                     <Image
-                        className="!h-full !w-20 !max-w-20"
+                        className="!h-full !w-20 !max-w-20 border"
                         src={data?.avt || state.currStudent?.avt}
                     />
                 </div>
@@ -43,6 +45,18 @@ const CheckinBlock = (props) => {
                     <div className="text-blue-500 font-medium">{state.currStudent?.name}</div>
                     <div>{unixTimeToHourMinutes(data?.time)}</div>
                 </div>
+                {data?.isFace && (
+                    <div className="absolute top-1 right-2">
+                        <Tooltip
+                            placement="top"
+                            title={"Đã xác thực khuôn mặt"}
+                            arrow={false}
+                            color="#333"
+                        >
+                            <IconCheck className="text-green-500" />
+                        </Tooltip>
+                    </div>
+                )}
             </div>
         </>
     );

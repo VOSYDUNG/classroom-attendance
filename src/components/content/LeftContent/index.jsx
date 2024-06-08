@@ -11,7 +11,9 @@ const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sh
 
 const LeftContent = (props) => {
 
-    const { currClassInfo, currClassCheckinInfo, currClassStudents, currClassRfidCheckin } = props;
+    const { currClassInfo, currClassCheckinInfo, currClassStudents, currClassRfidCheckin, combine } = props;
+
+    // console.log({combine});
 
     const classTime = {
         0: 'Thứ 2',
@@ -55,7 +57,7 @@ const LeftContent = (props) => {
             <div className="leading-3 p-3">{`Môn học: ${currClassInfo?.className}`}</div>
             <div className="leading-3 p-3">{`Lịch học: ${classTime}`}</div>
             <div className="flex items-center justify-between border-b border-[rgb(219,219,219)]">
-                <div className="leading-3 p-3 ">{`Sỉ số: ${currClassCheckinInfo?.length + currClassRfidCheckin?.length}/${currClassStudents?.length}`}</div>
+                <div className="leading-3 p-3 ">{`Sỉ số: ${combine?.length || 0}/${currClassStudents?.length}`}</div>
                 <div
                     title='Xuất file excel'
                     className="p-1 mr-2 hover:bg-[rgb(219,219,219)] transition-all duration-300 cursor-pointer"
@@ -65,14 +67,7 @@ const LeftContent = (props) => {
                 </div>
             </div>
             <div className="p-3 overflow-y-auto scrollbar-hide" style={{height: 'calc(100vh - 329px)'}}>
-                {currClassCheckinInfo?.map((item, index) => {
-                    return (
-                        <div className="my-2" key={`checkin-${index}`}>
-                            <CheckinBlock data={item}/>
-                        </div>
-                    )
-                })}
-                {currClassRfidCheckin?.map((item, index) => {
+                {combine?.map((item, index) => {
                     return (
                         <div className="my-2" key={`checkin-${index}`}>
                             <CheckinBlock data={item}/>

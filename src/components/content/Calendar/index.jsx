@@ -86,7 +86,7 @@ const Calendar = (props) => {
         previousWeek.setDate(previousWeek.getDate() - 7);
         const weeklyDate = firstAndLastDateOfWeek(previousWeek);
 
-        const currDate = `${weeklyDate[0]?.getFullYear()}-${addLeadingZero(weeklyDate[0]?.getMonth() + 1)}-${addLeadingZero(weeklyDate[0]?.getDate())}  -  ${weeklyDate[6]?.getFullYear()}-${addLeadingZero(weeklyDate[6]?.getMonth() + 1)}-${addLeadingZero(weeklyDate[6]?.getDate())}`;
+        const currDate = `${addLeadingZero(weeklyDate[0]?.getDate())}/${addLeadingZero(weeklyDate[0]?.getMonth() + 1)}/${weeklyDate[0]?.getFullYear()}  -  ${addLeadingZero(weeklyDate[6]?.getDate())}/${addLeadingZero(weeklyDate[6]?.getMonth() + 1)}/${weeklyDate[6]?.getFullYear()}`;
 
         setState(prev => ({...prev, currDateOfWeek: previousWeek, weeklyDate: weeklyDate, currDate: currDate}));
     };
@@ -96,7 +96,7 @@ const Calendar = (props) => {
         nextWeek.setDate(nextWeek.getDate() + 7);
         const weeklyDate = firstAndLastDateOfWeek(nextWeek);
 
-        const currDate = `${weeklyDate[0]?.getFullYear()}-${addLeadingZero(weeklyDate[0]?.getMonth() + 1)}-${addLeadingZero(weeklyDate[0]?.getDate())}  -  ${weeklyDate[6]?.getFullYear()}-${addLeadingZero(weeklyDate[6]?.getMonth() + 1)}-${addLeadingZero(weeklyDate[6]?.getDate())}`;
+        const currDate = `${addLeadingZero(weeklyDate[0]?.getDate())}/${addLeadingZero(weeklyDate[0]?.getMonth() + 1)}/${weeklyDate[0]?.getFullYear()}  -  ${addLeadingZero(weeklyDate[6]?.getDate())}/${addLeadingZero(weeklyDate[6]?.getMonth() + 1)}/${weeklyDate[6]?.getFullYear()}`;
 
         setState(prev => ({...prev, currDateOfWeek: nextWeek, weeklyDate: weeklyDate, currDate: currDate}));
     };
