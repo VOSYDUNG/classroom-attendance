@@ -73,9 +73,11 @@ const Calendar = (props) => {
         const year = now.getFullYear();
         const month = lookupMonth[now.getMonth()];
         const date = now.getDate() >= 10 ? now.getDate() : `0${now.getDate()}`;
-        const currDate = `${date} ${month} ${year}`;
+        // const currDate = `${date} ${month} ${year}`;
 
         const firstAndLast = firstAndLastDateOfWeek(now);
+        const currDate = `${addLeadingZero(firstAndLast[0]?.getDate())}/${addLeadingZero(firstAndLast[0]?.getMonth() + 1)}/${firstAndLast[0]?.getFullYear()}  -  ${addLeadingZero(firstAndLast[6]?.getDate())}/${addLeadingZero(firstAndLast[6]?.getMonth() + 1)}/${firstAndLast[6]?.getFullYear()}`;
+        
         handleChangeDate(now);
 
         setState(prev => ({...prev, currTime: currTime, currDate: currDate, weeklyDate: firstAndLast, currDateOfWeek: now, currDay: date, isCurrWeek: true}));
@@ -108,7 +110,8 @@ const Calendar = (props) => {
         const year = now.getFullYear();
         const month = lookupMonth[now.getMonth()];
         const date = now.getDate() >= 10 ? now.getDate() : `0${now.getDate()}`;
-        const currDate = `${date} ${month} ${year}`;
+        // const currDate = `${date} ${month} ${year}`;
+        const currDate = `${addLeadingZero(firstAndLast[0]?.getDate())}/${addLeadingZero(firstAndLast[0]?.getMonth() + 1)}/${firstAndLast[0]?.getFullYear()}  -  ${addLeadingZero(firstAndLast[6]?.getDate())}/${addLeadingZero(firstAndLast[6]?.getMonth() + 1)}/${firstAndLast[6]?.getFullYear()}`;
 
         handleChangeDate(now);
 

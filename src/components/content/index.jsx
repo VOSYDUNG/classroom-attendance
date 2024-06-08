@@ -72,6 +72,7 @@ const Content = (props) => {
                         const isFace = face.find(it => it?.mssv === item?.mssv);
                         const data = {
                             ...item,
+                            avt: isFace?.avt,
                             isFace: isFace ? true : false,
                         };
         
