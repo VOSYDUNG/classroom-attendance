@@ -26,18 +26,18 @@ const LeftContent = (props) => {
     }[currClassInfo?.classDate];
 
     const handeDownloadExcel = () => {
-        const classCheckinArr = currClassCheckinInfo?.concat(currClassRfidCheckin);
-        const currStudentCheckinId = classCheckinArr.map(item => item?.mssv);
+        const currStudentCheckin = combine.map((item) => {return { mssv: item?.mssv, isFace: item?.isFace }});
 
         const excelData = currClassStudents?.map((item, index) => {
-            if (currStudentCheckinId.includes(item?.mssv)) {
+            const isCheckin = currStudentCheckin.find(value => value?.mssv === item?.mssv);
+            if (isCheckin) {
                 return {
                     ...item,
-                    checkin: true,
+                    checkin: isCheckin?.isFace ? 'RFID + FACE' : 'RFID',
                 }
-            } else {
-                return item;
-            }
+            };
+
+            return item;
         });
 
         const modifiedData = excelData.map(student => {
