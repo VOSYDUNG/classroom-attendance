@@ -1,8 +1,15 @@
-# React + Vite
+# Classroom-Attendance
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Classroom Attendance is a user-friendly application designed for efficient attendance tracking and classroom management. It simplifies the process of recording and managing student attendance, ensuring accurate and organized data for educators.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Easy-to-use interface for attendance tracking
+- Organized and accurate data management
+- Real-time updates
+
+## How to use this
+
+  * Clone the repo: `git clone https://github.com/VOSYDUNG/classroom-attendance your-project-name`
+  * Install the dependencies: `cd your-project-name && npm install`
+  * Start development: `npm run dev`
